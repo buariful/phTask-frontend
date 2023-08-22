@@ -7,6 +7,8 @@ import Navbar from "./component/shared/Navbar";
 import MblMenu from "./component/shared/MblMenu";
 import { useState } from "react";
 import Footer from "./component/shared/Footer";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [mblMenuOpen, setMblMenuOpen] = useState(false);
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/media" element={<Media />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
       <Footer />
 
