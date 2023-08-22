@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Card, CardBody } from "@material-tailwind/react";
-import { AiFillLike } from "react-icons/ai";
 import "./post.css";
 
 const Post = () => {
@@ -49,18 +48,8 @@ const Post = () => {
             className="w-[220px] object-cover"
           />
         </div>
-        <div className="flex items-end gap-5">
-          <div className="flex gap-2 ">
-            <span>12</span>
-            <AiFillLike className="text-[20px] cursor-pointer text-blue-500 " />
-          </div>
-          <Button
-            size="sm"
-            className="mt-2 p-2 text-[10px] capitalize font-thin"
-          >
-            Read more
-          </Button>
-        </div>
+
+        <Button className="mt-2 capitalize font-thin">Details</Button>
       </CardBody>
     </Card>
   );

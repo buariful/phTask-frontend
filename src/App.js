@@ -9,6 +9,7 @@ import { useState } from "react";
 import Footer from "./component/shared/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PostDetails from "./pages/PostDetails";
 
 function App() {
   const [mblMenuOpen, setMblMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/media" element={<Media />}></Route>
+        <Route path="/media/:postId" element={<PostDetails />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
