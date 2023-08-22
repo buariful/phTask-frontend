@@ -5,7 +5,7 @@ import { IconButton } from "@material-tailwind/react";
 
 const Navbar = ({ setState }) => {
   return (
-    <div className="sticky top-0 left-0 py-6 shadow-md">
+    <div className="sticky top-0 left-0 py-6 shadow-md z-50 bg-white">
       <div className="w-10/12 mx-auto flex justify-between items-center">
         <div>
           <Link to="/" className="text-xl font-bold text-blue-500">
