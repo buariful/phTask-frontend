@@ -7,10 +7,11 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const AddPost = () => {
   const [selectectedImg, setSelectedImages] = useState([]);
-
+  const userData = useSelector((state) => state.user.data);
   const handleImageSelect = (event) => {
     const files = Array.from(event.target.files);
     const selectedImagesArray = files.map((file) => ({
@@ -27,6 +28,28 @@ const AddPost = () => {
       return updatedImages;
     });
   };
+
+  const handleSubmitPost = async (e) => {
+    e.preventDefault();
+    // { userName, userEmail, userPic, text }
+
+    const formData = new FormData();
+    selectectedImg.forEach((image) => {
+      formData.append("images", image.file);
+    });
+    formData.append("userName", userData?.displayName);
+    formData.append("userEmail", userData?.email);
+    formData.append("userPic", userData?.photoURL);
+    formData.append("text", e.target.postTxt.value);
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/post/new`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <div className=" mt-10 mb-14">
@@ -38,7 +61,7 @@ const AddPost = () => {
 
         <Card className="max-w-xl mx-auto border border-blue-gray-50">
           <CardBody>
-            <form>
+            <form onSubmit={handleSubmitPost}>
               <div
                 className={` justify-center items-center gap-5 my-10  ${
                   selectectedImg.length > 0 ? "flex" : "hidden"
@@ -84,7 +107,9 @@ const AddPost = () => {
               <Textarea label="Write something" name="postTxt" />
               <div className="text-center">
                 {" "}
-                <Button color="blue">Post</Button>
+                <Button color="blue" type="submit">
+                  Post
+                </Button>
               </div>
             </form>
           </CardBody>
