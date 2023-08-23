@@ -2,8 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IconButton } from "@material-tailwind/react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../features/app/firebase.init";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/user/userSlice";
 
 const Navbar = ({ setState }) => {
+  const [user] = useAuthState(auth);
+  const dispatch = useDispatch();
+
+  if (user) {
+    dispatch(setUser({ data: user }));
+  }
   return (
     <div className="sticky top-0 left-0 py-6 shadow-md z-50 bg-white">
       <div className="w-10/12 mx-auto flex justify-between items-center">

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Media from "./pages/Media";
 import About from "./pages/About";
@@ -10,9 +10,12 @@ import Footer from "./component/shared/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PostDetails from "./pages/PostDetails";
+import useGetPosts from "./features/hooks/useGetPosts";
 
 function App() {
   const [mblMenuOpen, setMblMenuOpen] = useState(false);
+  useGetPosts();
+
   return (
     <>
       <Navbar state={mblMenuOpen} setState={setMblMenuOpen} />

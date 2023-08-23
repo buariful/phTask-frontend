@@ -32,7 +32,6 @@ export default function Login() {
 
     signInWithEmailAndPassword(email.value, password.value);
   };
-  console.log(user, gUser);
   if (user) {
     dispatch(setUser({ data: { ...user?.user } }));
     navigate("/");
