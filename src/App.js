@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Media from "./pages/Media";
 import About from "./pages/About";
@@ -16,6 +16,7 @@ function App() {
   return (
     <>
       <Navbar state={mblMenuOpen} setState={setMblMenuOpen} />
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/media" element={<Media />}></Route>
